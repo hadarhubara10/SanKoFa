@@ -9,19 +9,10 @@ import { withTheme } from '@emotion/react';
 import { useFormContext } from 'react-hook-form';
 const axios = require('axios').default;
 
-const SelectLocation = ({ theme, data }) => {
+const SelectLocation = ({ theme, locations }) => {
   const { register } = useFormContext(); // retrieve all hook methods
-
   const [listOflLocations, setListOflLocations] = useState([]);
   const [location, setLocation] = useState('');
-
-  useEffect(() => {
-    axios
-      .get(
-        `https://data.gov.il/api/3/action/datastore_search?resource_id=5c78e9fa-c2e2-4771-93ff-7f400a12f7ba&limit=1500`
-      )
-      .then((response) => setListOflLocations(response.data.result.records));
-  }, []);
 
   const handleChange = (event) => {
     setLocation(event.target.value);
@@ -65,8 +56,8 @@ const SelectLocation = ({ theme, data }) => {
             <MenuItem value="" disabled>
               <em>רשימת ישובים</em>
             </MenuItem>
-            {listOflLocations.length > 0 &&
-              listOflLocations.map((item) => (
+            {locations?.length > 0 &&
+              locations.map((item) => (
                 <MenuItem key={item._id} value={item.שם_ישוב}>
                   {item.שם_ישוב}
                 </MenuItem>

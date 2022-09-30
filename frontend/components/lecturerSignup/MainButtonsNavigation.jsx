@@ -12,7 +12,7 @@ const styles = {
   }),
 };
 
-const MainButtonNavigation = ({ theme }) => {
+const MainButtonNavigation = ({ theme,locations }) => {
   const [value, setValue] = useState(0);
   // React hook form
   const methods = useForm();
@@ -20,7 +20,7 @@ const MainButtonNavigation = ({ theme }) => {
 
   const viewPage = () => {
     if (value === 0) {
-      return <LecturerAbout toNextPage={handleChange} />;
+      return <LecturerAbout toNextPage={handleChange} locations={locations} />;
     } else if (value === 1) {
       return <AboutLecture toNextPage={handleChange} />;
     } else if (value === 2) {

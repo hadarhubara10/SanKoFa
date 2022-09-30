@@ -6,7 +6,7 @@ import SelectLocation from './SelectLocation';
 import InputField from '../common/InputField';
 import InputLabel from '../common/InputLabel';
 import ButtonFooter from '../common/ButtonFooter';
-const LecturerAbout = ({ theme, toNextPage }) => {
+const LecturerAbout = ({ theme, toNextPage, locations }) => {
   const styles = {
     box: css({
       display: 'flex',
@@ -97,7 +97,7 @@ const LecturerAbout = ({ theme, toNextPage }) => {
       </Box>
       <Box css={styles.box}>
         <Box css={styles.boxTextField}>
-          <SelectLocation />
+          <SelectLocation locations={locations} />
         </Box>
       </Box>
       <Box css={styles.box}>
